@@ -1,0 +1,11 @@
+.preview-card {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: monospace;
+    white-space: pre-wrap;
+  }
+  
