@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import CodeSnippets from './pages/CodeSnippets';
@@ -9,12 +9,12 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/code-snippets" component={CodeSnippets} />
-        <Route path="/submit-code" component={SubmitCode} />
-        <Route path="/read-article" component={ReadArticle} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/code-snippets" element={<CodeSnippets />} />
+        <Route path="/submit-code" element={<SubmitCode />} />
+        <Route path="/read-article" element={<ReadArticle />} />
+      </Routes>
     </Router>
   );
 }
