@@ -112,41 +112,101 @@ function SubmitCode() {
   const [title, setTitle] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const [titleError, setTitleError] = useState("");
+const [languageError, setLanguageError] = useState("");
+const [codeError, setCodeError] = useState("");
+
+
   // Get the navigate function from the react-router-dom package
   const navigate = useNavigate();
 
   // Update the selectedLanguage state variable when the user selects a language
-  const handleLanguageChange = (event) => {
-    setSelectedLanguage(event.target.value);
-    setIsValid(false); // Reset the validation flag
-  };
-
+const handleLanguageChange = (event) => {
+  const selectedValue = event.target.value;
+  setSelectedLanguage(selectedValue);
+  if (!selectedValue) {
+    setLanguageError("Language is required");
+  } else {
+    setLanguageError("");
+  }
+  setIsValid(selectedValue && code && title);
+};
   // Update the code state variable when the user types into the code input field
-  const handleCodeChange = (event) => {
-    setCode(event.target.value);
-    setIsValid(false); // Reset the validation flag
-  };
-
+// const handleCodeChange = (event) => {
+//   const enteredCode = event.target.value;
+//   setCode(enteredCode);
+//   if (!enteredCode) {
+//     setCodeError("Code is required");
+//   } else if (enteredCode.length > 500) {
+//     setCodeError("Code should be less than 500 characters");
+//   } else {
+//     setCodeError("");
+//   }
+//   setIsValid(selectedLanguage && enteredCode && title);
+// };
+// Update the code state variable when the user types into the code input field
+const handleCodeChange = (event) => {
+  setCode(event.target.value);
+  setIsValid(false); // Reset the validation flag
+};
   // Update the title state variable when the user types into the title input field
-  const handleTitleChange = (event) => {
-    setTitle(event.target.value);
-    setIsValid(false); // Reset the validation flag
-  };
-
+const handleTitleChange = (event) => {
+  const enteredTitle = event.target.value;
+  setTitle(enteredTitle);
+  if (!enteredTitle) {
+    setTitleError("Title is required");
+  } else if (enteredTitle.length > 50) {
+    setTitleError("Title should be less than 50 characters");
+  } else {
+    setTitleError("");
+  }
+  setIsValid(selectedLanguage && code && enteredTitle);
+};
   // Set the isValid state variable to true when the user clicks the Verify button
   const handleCodeVerify = () => {
     setIsValid(true);
   };
 
-  // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
     setIsSubmitted(true); // Set the isSubmitted flag to true
-    // TODO: Perform submission logic here (e.g. send the form data to a server)
-    // Navigate to the code snippet page after successful submission
-    navigate("/code-snippet");
+  
+    // Perform form validation
+    let errors = false;
+    if (!title) {
+      setTitleError("Title is required");
+      errors = true;
+    } else if (title.length > 50) {
+      setTitleError("Title should be less than 50 characters");
+      errors = true;
+    } else {
+      setTitleError("");
+    }
+  
+    if (!selectedLanguage) {
+      setLanguageError("Language is required");
+      errors = true;
+    } else {
+      setLanguageError("");
+    }
+  
+    if (!code) {
+      setCodeError("Code is required");
+      errors = true;
+    } else if (code.length > 500) {
+      setCodeError("Code should be less than 500 characters");
+      errors = true;
+    } else {
+      setCodeError("");
+    }
+  
+    // If there are no errors, submit the form and navigate to the code snippet page
+    if (!errors) {
+      // TODO: Perform submission logic here (e.g. send the form data to a server)
+      navigate("/mycode-snippet");
+    }
   };
-
+  
   return (
     <div className="container">
       {/* Display the form heading */}
@@ -155,46 +215,50 @@ function SubmitCode() {
       <form className="form" onSubmit={handleSubmit}>
         {/* Display the title input field */}
         <div className="form-group">
-          <label htmlFor="title">Snippet Title:</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={title}
-            onChange={handleTitleChange}
-            className="input"
-          />
-        </div>
-        {/* Display the language dropdown */}
-        <div className="form-group">
-          <label htmlFor="language">Language:</label>
-          <select
-            id="language"
-            name="language"
-            value={selectedLanguage}
-            onChange={handleLanguageChange}
-            className="select"
-          >
-            <option value="">Select Language</option>
-            <option value="React">React</option>
-            <option value="JavaScript">JavaScript</option>
-            <option value="Node">Node</option>
-            <option value="HTML">HTML</option>
-          </select>
-        </div>
-        {/* Display the code input field */}
-        <div className="form-group">
-          <label htmlFor="code">Code:</label>
-          <textarea
-            id="code"
-            name="code"
-            rows="10"
-            cols="50"
-            value={code}
-            onChange={handleCodeChange}
-            className="textarea"
-          ></textarea>
-        </div>
+  <label htmlFor="title">Snippet Title:</label>
+  <input
+    type="text"
+    id="title"
+    name="title"
+    value={title}
+    onChange={handleTitleChange}
+    className="input"
+  />
+  {titleError && <span className="error">{titleError}</span>}
+</div>
+
+<div className="form-group">
+  <label htmlFor="language">Language:</label>
+  <select
+    id="language"
+    name="language"
+    value={selectedLanguage}
+    onChange={handleLanguageChange}
+    className="select"
+  >
+    <option value="">Select Language</option>
+    <option value="React">React</option>
+    <option value="JavaScript">JavaScript</option>
+    <option value="Node">Node</option>
+    <option value="HTML">HTML</option>
+  </select>
+  {languageError && <span className="error">{languageError}</span>}
+</div>
+
+<div className="form-group">
+  <label htmlFor="code">Code:</label>
+  <textarea
+    id="code"
+    name="code"
+    rows="10"
+    cols="50"
+    value={code}
+    onChange={handleCodeChange}
+    className="textarea"
+  ></textarea>
+  {codeError && <span className="error">{codeError}</span>}
+</div>
+
         {/* Display the Verify button */}
         <button type="button" onClick={handleCodeVerify} className="button">
           Verify
