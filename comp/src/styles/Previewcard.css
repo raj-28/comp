@@ -1,4 +1,4 @@
-.preview-card {
+/* .preview-card {
     margin-top: 20px;
     padding: 10px;
     background-color: #f2f2f2;
@@ -8,4 +8,85 @@
     font-family: monospace;
     white-space: pre-wrap;
   }
-  
+   */
+
+
+  /*  -----  */
+
+  .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #ccc;
+  width: 80%;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+}
+
+.card-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.card-content {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f7f7f7;
+  color: #555;
+}
+
+button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #0069d9;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.success-message {
+  color: green;
+  font-size: 14px;
+  margin-top: 5px;
+}
