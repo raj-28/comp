@@ -1,0 +1,17 @@
+{
+  "name": "react_components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "components"
+  ],
+  "author": "RK",
+  "license": "ISC",
+  "dependencies": {
+    "react-router-dom": "^6.10.0"
+  }
+}
