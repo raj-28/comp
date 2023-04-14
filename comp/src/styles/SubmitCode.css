@@ -1,0 +1,107 @@
+/* Container styles */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 20px;
+  }
+  
+  /* Heading styles */
+  .heading {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Form styles */
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+  }
+  
+  /* Form group styles */
+  .form-group {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  /* Label styles */
+  .label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Input styles */
+  .input,
+  .select,
+  .textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f5f5f5;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  /* Input hover and focus styles */
+  .input:hover,
+  .select:hover,
+  .textarea:hover,
+  .input:focus,
+  .select:focus,
+  .textarea:focus {
+    border-color: #0077cc;
+    outline: none;
+  }
+  
+  /* Select styles */
+  .select {
+    appearance: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230077cc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")
+      no-repeat;
+    background-position: right 15px center;
+  }
+  
+  /* Textarea styles */
+  .textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+  
+  /* Button styles */
+  button {
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  /* Button hover and focus styles */
+  button:hover,
+  button:focus {
+    background-color: #005fa3;
+    outline: none;
+  }
+  
+  /* Disabled button styles */
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
