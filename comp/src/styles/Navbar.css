@@ -1,71 +1,3 @@
-/* nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: black;
-    padding: 10px;
-  }
-  
-  ul {
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  li {
-    margin: 0 10px;
-  }
-  
-  a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .active {
-    font-weight: bold;
-  }
-  
-  @media only screen and (max-width: 768px) {
-    nav {
-      flex-direction: column;
-    }
-  
-    ul {
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-  
-    li {
-      margin: 10px 0;
-    }
-  
-    .hamburger {
-      display: block;
-    }
-  
-    .menu {
-      display: none;
-    }
-  }
-  
-  .hamburger {
-    display: none;
-    cursor: pointer;
-    font-size: 24px;
-  }
-  
-  .menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-   */
 
    .navbar {
     display: flex;
@@ -116,40 +48,45 @@
       align-items: center;
     }
   
-    .nav-item {
+    .navbar-nav li {
       margin: 0 15px;
     }
   
     .menu-icon {
       display: none;
     }
-  }
-  
-  @media only screen and (max-width: 767px) {
-    .navbar {
-      flex-direction: column;
-    }
-  
-    .navbar-logo {
-      order: 2;
-      margin-bottom: 10px;
-    }
-  
+    
+    /* new code for larger screens */
     .navbar-nav {
-      order: 3;
-      display: none;
+      display: flex !important;
+      flex-direction: row;
+    }
+    
+    .nav-item {
+      margin: 0 10px;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .navbar-nav {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 60%;
+      height: calc(100% - 120px);
       background-color: black;
       color: white;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      padding: 10px;
-      box-sizing: border-box;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+  
+    .navbar-nav.active {
+      transform: translateX(0);
     }
   
     .nav-item {
       margin: 10px 0;
+      text-align: center;
     }
   
     .menu-icon {
@@ -157,6 +94,7 @@
       cursor: pointer;
       font-size: 1.5rem;
       margin-right: 10px;
+      display: block;
     }
   
     .menu-icon.active {
@@ -167,6 +105,12 @@
       content: '\f0c9';
       font-family: 'FontAwesome';
     }
+
+    .navbar-nav {
+        display: flex !important;
+        flex-direction: column;
+      }
+    
   
     .menu-icon.active:before {
       content: '\f00d';
